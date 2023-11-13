@@ -8,7 +8,7 @@ const packageJson = JSON.parse(readFileSync("./package.json", "utf-8"));
 
 export default [
   {
-    input: "src/index.ts",
+    input: "src/index.tsx",
     output: [
       {
         file: packageJson.main,
@@ -28,7 +28,7 @@ export default [
     ],
   },
   {
-    input: "src/index.ts",
+    input: "src/index.tsx",
     output: [
       {
         file: packageJson.types,
