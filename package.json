@@ -1,5 +1,5 @@
 {
-  "name": "reactpakcage",
+  "name": "@Abdullah-Ahmed1/react-package-test",
   "version": "1.0.0",
   "description": "simple react package",
   "type": "module",
@@ -25,5 +25,8 @@
   "files": [
     "dist"
   ],
-  "types": "dist/index.d.ts"
+  "types": "dist/index.d.ts",
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/Abdullah-Ahmed1"
+  }
 }
