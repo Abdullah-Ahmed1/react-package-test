@@ -2,9 +2,9 @@ import resolve from "@rollup/plugin-node-resolve";
 import commonjs from "@rollup/plugin-commonjs";
 import typescript from "@rollup/plugin-typescript";
 import dts from "rollup-plugin-dts";
-import { readFileSync } from "fs";
+import packageJson from "./package.json" assert { type: "json" };
 
-const packageJson = JSON.parse(readFileSync("./package.json", "utf-8"));
+// const packageJson = require("./package.json");
 
 export default [
   {
@@ -12,12 +12,12 @@ export default [
     output: [
       {
         file: packageJson.main,
-        format: "cjs",
+        format: "esm",
         sourcemap: true,
       },
       {
         file: packageJson.module,
-        format: "cjs",
+        format: "esm",
         sourcemap: true,
       },
     ],
@@ -28,13 +28,9 @@ export default [
     ],
   },
   {
-    input: "src/index.tsx",
-    output: [
-      {
-        file: packageJson.types,
-        format: "cjs",
-      },
-    ],
+    input: "dist/esm/types/index.d.ts",
+    output: [{ file: "dist/index.d.ts", format: "esm" }],
     plugins: [dts()],
+    external: [/\.(css|less|scss)$/],
   },
 ];
